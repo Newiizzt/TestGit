@@ -1,0 +1,5 @@
+package com.example.demo.model.party.response;
+
+public class GetAllPartyResponse {
+
+}

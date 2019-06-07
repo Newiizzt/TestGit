@@ -1,0 +1,21 @@
+package com.example.demo.db.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.db.dao.PartyDao;
+import com.example.demo.db.service.PartyService;
+import com.example.demo.model.db.PartyModel;
+
+@Service
+public class PartyServiceImpl implements PartyService {
+	@Autowired
+	private PartyDao partyDao;
+
+	@Override
+	public List<PartyModel> getAllParty() {
+		return partyDao.getAllParty();
+	}
+}

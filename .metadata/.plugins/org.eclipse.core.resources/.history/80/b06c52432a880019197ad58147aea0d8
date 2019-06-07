@@ -1,0 +1,22 @@
+package com.example.demo.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+
+
+public class PartyController {
+	///@PostMapping(value = "/getMenuById", produces= {MediaType.APPLICATION_JSON_VALUE}, consumes= {MediaType.APPLICATION_JSON_VALUE})
+	//public @ResponseBody AbsResponseModel getMenuById(HttpServletRequest request, HttpServletResponse response, 
+	//@RequestBody GetMenuRequestModel requestMsg) throws Exception {
+
+	//GetMenuResponseModel getMenuResponseModel = new GetMenuResponseModel();
+	//getMenuResponseModel.setMenu(menuHelper.getMenuById(requestMsg.getMenuId()));
+	//return getMenuResponseModel;
+	//}
+	
+	
+	//create controller
+	@GetMapping(value="/getStringMsg")
+	public String getStringMsg() {
+		return "test";
+	}
+}

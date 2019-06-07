@@ -1,0 +1,24 @@
+package th.co.orcsoft.training.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import th.co.orcsoft.training.model.UserDTO;
+import th.co.orcsoft.training.repo.UserRepo;
+import th.co.orcsoft.training.repo.UserRepo1;
+
+@Service
+public class UserService {
+	
+	
+	
+	
+	@Autowired
+	private UserRepo1 user1Repo;
+	
+	public List<UserDTO> getUser(){
+		return user1Repo.getUser1();
+	}
+}

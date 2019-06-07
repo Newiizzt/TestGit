@@ -1,0 +1,88 @@
+package com.example.demo.common.config;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.stereotype.Component;
+
+@RefreshScope
+@Component
+public class ApplicationConfig {
+	// Database COR
+	@Value("${spring.datasource.driver-class-name}")
+	private String datasourceDriverClassName;
+	@Value("${spring.datasource.url}")
+	private String datasourceUrl;
+	@Value("${spring.datasource.username}")
+	private String datasourceUsername;
+	@Value("${spring.datasource.password}")
+	private String datasourcePassword;
+
+	public String getDatasourceDriverClassName() {
+		return datasourceDriverClassName;
+	}
+
+	public void setDatasourceDriverClassName(String datasourceDriverClassName) {
+		this.datasourceDriverClassName = datasourceDriverClassName;
+	}
+
+	public String getDatasourceUrl() {
+		return datasourceUrl;
+	}
+
+	public void setDatasourceUrl(String datasourceUrl) {
+		this.datasourceUrl = datasourceUrl;
+	}
+
+	public String getDatasourceUsername() {
+		return datasourceUsername;
+	}
+
+	public void setDatasourceUsername(String datasourceUsername) {
+		this.datasourceUsername = datasourceUsername;
+	}
+
+	public String getDatasourcePassword() {
+		return datasourcePassword;
+	}
+
+	public void setDatasourcePassword(String datasourcePassword) {
+		this.datasourcePassword = datasourcePassword;
+	}
+
+
+
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+@Configuration
+public class DatabaseConfig {
+	@Autowired
+	private ApplicationConfig applicationConfig;
+	
+	@Bean("dataSourceCor")
+    public DataSource dataSourceCor() {
+		DriverManagerDataSource bs = new DriverManagerDataSource();
+		 bs.setDriverClassName(applicationConfig.getDatasourceDriverClassName());
+		 bs.setUrl(applicationConfig.getDatasourceUrl());
+		 bs.setUsername(applicationConfig.getDatasourceUsername());
+		 bs.setPassword(applicationConfig.getDatasourcePassword());
+		 return bs;
+    }
+	
+	@Bean("namedParameterJdbcTemplateCor")
+	public NamedParameterJdbcTemplate namedParameterJdbcTemplateCor() {
+		return new NamedParameterJdbcTemplate(dataSourceCor());
+	}
+	
+	@Bean("dataSourceTransactionManagerCor")
+	public DataSourceTransactionManager dataSourceTransactionManagerCor() {
+		return new DataSourceTransactionManager(dataSourceCor());
+	}
+}
+
+

@@ -1,0 +1,5 @@
+package com.example.demo.db.service.impl;
+
+public class PartyServiceImpl {
+
+}

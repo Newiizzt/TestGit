@@ -1,0 +1,20 @@
+package com.example.demo.model.db;
+
+public class PartyModel {
+	private String ptyId;
+	private String ptyName;
+	
+	public String getPtyId() {
+		return ptyId;
+	}
+	public void setPtyId(String ptyId) {
+		this.ptyId = ptyId;
+	}
+	public String getPtyName() {
+		return ptyName;
+	}
+	public void setPtyName(String ptyName) {
+		this.ptyName = ptyName;
+	}
+
+}

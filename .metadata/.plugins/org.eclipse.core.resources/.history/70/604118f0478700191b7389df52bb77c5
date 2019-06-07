@@ -1,0 +1,13 @@
+package th.co.orcsoft.training.service.impl;
+
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
+
+@Service
+@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+public class HelloServiceImpl {
+	public String sayHelloByName(String name) {
+		return "hello ," +name;
+	}
+}

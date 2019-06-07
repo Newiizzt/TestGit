@@ -1,0 +1,30 @@
+package th.co.orcsoft.training.aspect;
+
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.stereotype.Component;
+
+@Aspect
+@Component
+public class TestLogAspect {
+
+	@Pointcut("execution(* th.co.orcsoft.training.controller.*.*(..))")
+	public void AllClassInController() {};
+	
+	@Pointcut("execution(* th.co.orcsoft.training.service..*.*(..))")
+	public void AllClassInService() {};
+	
+	//@Before("execution(* th.co.orcsoft.training.controller.*.*(..))") ต้อง componentscan ที่ trainingApp
+	//@Before("execution(* th.co.orcsoft.training.service..*.*(..))")
+	
+	
+	@Before("AllClassInController() || AllClassInService()") //use with pointcut
+	public void logingBefore(JoinPoint joinPoint) {
+		System.out.println("before do"
+	+ joinPoint.getSignature().getDeclaringTypeName() //name of class
+	+ "."
+	+ joinPoint.getSignature().getName()); // name of method
+	}
+}

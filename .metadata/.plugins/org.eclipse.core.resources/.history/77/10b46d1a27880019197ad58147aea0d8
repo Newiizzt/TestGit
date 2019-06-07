@@ -1,0 +1,5 @@
+package com.example.demo.common.db.dao.impl;
+
+public class PartyDaoImpl {
+
+}

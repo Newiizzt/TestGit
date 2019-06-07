@@ -1,0 +1,5 @@
+package th.co.orcsoft.training.service.impl;
+
+public class UserService {
+
+}

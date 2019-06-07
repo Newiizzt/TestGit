@@ -1,0 +1,29 @@
+package com.example.demo.common.db.dao.impl;
+
+import java.util.List;
+
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.stereotype.Repository;
+
+import com.example.demo.common.db.dao.AbsCorDao;
+import com.example.demo.common.db.dao.PartyDao;
+import com.example.demo.model.db.PartyModel;
+
+//for conn springboot
+@Repository 
+public class PartyDaoImpl extends AbsCorDao implements PartyDao {
+
+	@Override
+	public List<PartyModel> getAllParty() {
+		String sql = "select ptyID,ptyName from party";
+		
+		List<PartyModel> list = namedParameterJdbcTemplate.query(sql
+				, new BeanPropertyRowMapper<PartyModel>(PartyModel.class));
+		return list;
+		
+		
+	}
+	
+	
+
+}

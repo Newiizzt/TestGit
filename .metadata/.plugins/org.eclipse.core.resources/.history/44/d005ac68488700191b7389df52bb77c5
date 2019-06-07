@@ -1,0 +1,15 @@
+package th.co.orcsoft.training.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
+
+import th.co.orcsoft.training.service.impl.HelloServiceImpl;
+
+@RestController
+public class TestController {
+	@Autowired
+	private HelloServiceImpl helloService;
+	
+
+
+}
